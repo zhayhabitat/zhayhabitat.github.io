@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zahra Yaghoobloo — Neurocultural Architecture &amp; Digital Twin Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#111d33;
+    --navy:#16233f;
+    --navy-panel:#1c2c4c;
+    --line:#33507f;
+    --line-soft:rgba(90,130,190,0.28);
+    --paper:#f2eee2;
+    --paper-dim:#c7cedd;
+    --slate:#8b96ad;
+    --amber:#f0a355;
+    --amber-dim:#c9834a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--navy-deep);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber);color:var(--navy-deep);}
+
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+
+  /* drafting frame */
+  .frame{
+    position:fixed;
+    inset:14px;
+    border:1px solid var(--line-soft);
+    pointer-events:none;
+    z-index:5;
+  }
+  .frame::before,.frame::after,
+  .frame .c2,.frame .c3{
+    content:'';
+    position:absolute;
+    width:18px;height:18px;
+  }
+  .cross{position:absolute;width:16px;height:16px;}
+  .cross::before,.cross::after{
+    content:'';
+    position:absolute;
+    background:var(--line-soft);
+  }
+  .cross::before{width:100%;height:1px;top:50%;}
+  .cross::after{height:100%;width:1px;left:50%;}
+  .cross.tl{top:-8px;left:-8px;}
+  .cross.tr{top:-8px;right:-8px;}
+  .cross.bl{bottom:-8px;left:-8px;}
+  .cross.br{bottom:-8px;right:-8px;}
+  @media(max-width:640px){.frame{display:none;}}
+
+  nav{
+    position:sticky;top:0;z-index:10;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 40px;
+    background:linear-gradient(var(--navy-deep) 70%, transparent);
+    backdrop-filter:blur(2px);
+  }
+  nav .name{font-family:'Fraunces',serif;font-size:15px;letter-spacing:0.02em;color:var(--paper);}
+  nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;}
+  nav a{color:var(--slate);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s;}
+  nav a:hover{color:var(--amber);}
+  @media(max-width:640px){
+    nav{padding:18px 20px;}
+    nav ul{gap:14px;}
+    nav ul li:nth-child(n+4){display:none;}
+  }
+
+  section{
+    padding:110px 40px;
+    max-width:980px;
+    margin:0 auto;
+    border-bottom:1px solid var(--line-soft);
+  }
+  section:last-of-type{border-bottom:none;}
+  @media(max-width:640px){section{padding:70px 22px;}}
+
+  /* ---- hero / title block ---- */
+  .hero{padding-top:70px;padding-bottom:90px;}
+  .sheet-tag{display:flex;gap:10px;align-items:center;margin-bottom:28px;}
+  .sheet-tag .dot{width:6px;height:6px;background:var(--amber);border-radius:50%;}
+  h1.display{
+    font-family:'Fraunces',serif;
+    font-weight:450;
+    font-size:clamp(34px,5.4vw,58px);
+    line-height:1.12;
+    margin:0 0 30px;
+    max-width:16ch;
+    color:var(--paper);
+  }
+  h1.display em{font-style:italic;color:var(--amber);}
+  .hero-sub{
+    color:var(--paper-dim);
+    max-width:56ch;
+    font-size:17px;
+    margin-bottom:56px;
+  }
+
+  .title-block{
+    border:1px solid var(--line);
+    background:var(--navy-panel);
+  }
+  .tb-row{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    border-bottom:1px solid var(--line);
+  }
+  .tb-row:last-child{border-bottom:none;}
+  .tb-key{
+    padding:14px 18px;
+    border-right:1px solid var(--line);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    color:var(--amber-dim);
+    text-transform:uppercase;
+  }
+  .tb-val{padding:14px 18px;font-size:14.5px;color:var(--paper-dim);}
+  @media(max-width:640px){
+    .tb-row{grid-template-columns:120px 1fr;}
+  }
+
+  /* ---- section headers ---- */
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:46px;}
+  .sec-num{font-family:'IBM Plex Mono',monospace;color:var(--amber-dim);font-size:13px;}
+  h2.display{
+    font-family:'Fraunces',serif;
+    font-weight:450;
+    font-size:clamp(24px,3vw,32px);
+    margin:0;
+    color:var(--paper);
+  }
+  .sec-rule{flex:1;height:1px;background:var(--line-soft);}
+
+  /* ---- about ---- */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;}
+  .about-grid p{color:var(--paper-dim);margin:0 0 18px;font-size:15.5px;}
+  .credentials{border-left:1px solid var(--line);padding-left:24px;}
+  .credentials .cred{margin-bottom:22px;}
+  .credentials .cred .yr{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--amber-dim);display:block;margin-bottom:4px;}
+  .credentials .cred .what{font-size:14px;color:var(--paper-dim);}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:36px;}.credentials{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:24px;}}
+
+  /* ---- legend / frameworks ---- */
+  .legend-item{
+    display:grid;
+    grid-template-columns:56px 1fr;
+    gap:22px;
+    padding:28px 0;
+    border-top:1px solid var(--line-soft);
+  }
+  .legend-item:last-child{border-bottom:1px solid var(--line-soft);}
+  .legend-symbol{
+    width:40px;height:40px;
+    border:1px solid var(--amber-dim);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-style:italic;color:var(--amber);
+    font-size:18px;
+  }
+  .legend-item h3{
+    font-family:'Fraunces',serif;font-weight:450;
+    font-size:19px;margin:0 0 8px;color:var(--paper);
+  }
+  .legend-item p{margin:0 0 12px;color:var(--paper-dim);font-size:14.5px;max-width:62ch;}
+  .layers{display:flex;flex-wrap:wrap;gap:10px;}
+  .layer{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;
+    color:var(--slate);border:1px solid var(--line);padding:5px 10px;
+  }
+
+  /* ---- notes / revision table ---- */
+  .rev-table{border:1px solid var(--line);}
+  .rev-head,.rev-row{
+    display:grid;
+    grid-template-columns:70px 130px 1fr 90px;
+    align-items:center;
+  }
+  .rev-head{
+    border-bottom:1px solid var(--line);
+    background:var(--navy-panel);
+  }
+  .rev-head span{
+    padding:12px 16px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;letter-spacing:.1em;color:var(--slate);text-transform:uppercase;
+  }
+  .rev-row{border-bottom:1px solid var(--line-soft);transition:background .2s;}
+  .rev-row:last-child{border-bottom:none;}
+  .rev-row:hover{background:var(--navy-panel);}
+  .rev-row > div{padding:18px 16px;}
+  .rev-row .rev-id{font-family:'IBM Plex Mono',monospace;color:var(--amber);font-size:13px;}
+  .rev-row .rev-date{font-family:'IBM Plex Mono',monospace;color:var(--slate);font-size:12.5px;}
+  .rev-row .rev-desc{color:var(--paper-dim);font-size:14.5px;}
+  .rev-row .rev-desc .t{color:var(--paper);display:block;margin-bottom:3px;font-size:15px;}
+  .rev-row .rev-link{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--slate);text-decoration:none;}
+  .rev-row .rev-link:hover{color:var(--amber);}
+  @media(max-width:700px){
+    .rev-head{display:none;}
+    .rev-row{grid-template-columns:1fr;}
+    .rev-row > div{padding:6px 16px;}
+    .rev-row{padding:16px 0;}
+  }
+
+  /* ---- publications ---- */
+  .pub{
+    display:flex;justify-content:space-between;gap:20px;
+    padding:22px 0;border-top:1px solid var(--line-soft);
+  }
+  .pub:last-child{border-bottom:1px solid var(--line-soft);}
+  .pub .p-main .p-title{color:var(--paper);font-size:15.5px;margin-bottom:5px;}
+  .pub .p-main .p-venue{color:var(--slate);font-size:13px;font-family:'IBM Plex Mono',monospace;}
+  .pub .p-status{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;
+    color:var(--amber-dim);white-space:nowrap;align-self:center;text-transform:uppercase;
+  }
+
+  /* ---- contact / footer title block ---- */
+  footer{padding:90px 40px 60px;max-width:980px;margin:0 auto;}
+  .contact-lead{font-family:'Fraunces',serif;font-size:clamp(24px,3.4vw,36px);max-width:16ch;margin-bottom:50px;color:var(--paper);font-weight:450;}
+  .key-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);}
+  .key-item{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px;}
+  .key-item .k-label{display:block;margin-bottom:8px;}
+  .key-item a{color:var(--paper-dim);text-decoration:none;font-size:14.5px;}
+  .key-item a:hover{color:var(--amber);}
+  .fine{margin-top:60px;color:var(--slate);font-size:12px;font-family:'IBM Plex Mono',monospace;}
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <span class="cross tl"></span><span class="cross tr"></span>
+  <span class="cross bl"></span><span class="cross br"></span>
+</div>
+
+<nav>
+  <div class="name">Z. Yaghoobloo</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#frameworks">Frameworks</a></li>
+    <li><a href="#notes">Notes</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="top">
+  <div class="sheet-tag">
+    <span class="dot"></span>
+    <span class="label">Sheet 01 / 05 — Independent Research Practice</span>
+  </div>
+  <h1 class="display">Space is studied here as something the nervous system <em>reads</em>, not just occupies.</h1>
+  <p class="hero-sub">I work across neuroarchitecture, digital twin modeling, and metaverse environments — treating the built (and virtual) environment as a cognitive stimulus, a cultural artifact, and a design problem at once.</p>
+
+  <div class="title-block">
+    <div class="tb-row">
+      <div class="tb-key">Name</div>
+      <div class="tb-val">Zahra Yaghoobloo</div>
+    </div>
+    <div class="tb-row">
+      <div class="tb-key">Discipline</div>
+      <div class="tb-val">Neuroarchitecture · Digital Twins · Metaverse Environments</div>
+    </div>
+    <div class="tb-row">
+      <div class="tb-key">Credential</div>
+      <div class="tb-val">PhD, Transportation Engineering, 2025</div>
+    </div>
+    <div class="tb-row">
+      <div class="tb-key">Base</div>
+      <div class="tb-val">Independent researcher</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <h2 class="display">About</h2>
+    <span class="sec-rule"></span>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p>My training sits at an unusual junction: a first career in architecture, then a PhD, then a return to spatial cognition and digital modeling. That path shapes how I read a building, a virtual environment, or a piece of neuroscience research — as three descriptions of the same problem.</p>
+      <p>Most of my current work asks how perception, memory, and culture shape the way people read and inhabit space, physical or virtual, and how that understanding can be encoded into digital twins for design rather than left as intuition.</p>
+      <p>I write and publish independently, outside institutional affiliation, across journals, edited volumes, and long-form notes.</p>
+    </div>
+    <div class="credentials">
+      <div class="cred">
+        <span class="yr">2025</span>
+        <span class="what">PhD, Transportation Engineering</span>
+      </div>
+      <div class="cred">
+        <span class="yr">Prior</span>
+        <span class="what">B.Arch and M.Arch, Architecture</span>
+      </div>
+      <div class="cred">
+        <span class="yr">2025</span>
+        <span class="what">Scopus-indexed article, <i>Infrastructures</i></span>
+      </div>
+      <div class="cred">
+        <span class="yr">Book</span>
+        <span class="what">IGI Global — human-centric digital twins for autonomous mobility</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="frameworks">
+  <div class="sec-head">
+    <span class="sec-num">03</span>
+    <h2 class="display">Frameworks</h2>
+    <span class="sec-rule"></span>
+  </div>
+
+  <div class="legend-item">
+    <div class="legend-symbol">N</div>
+    <div>
+      <h3>Neurocultural Architecture</h3>
+      <p>A way of framing spatial design that treats neuro-perceptual response and cultural meaning-making as inseparable inputs, rather than analyzing sensory qualities of a space and its symbolic or cultural reading as two separate exercises.</p>
+    </div>
+  </div>
+
+  <div class="legend-item">
+    <div class="legend-symbol">C→N</div>
+    <div>
+      <h3>Cognition-to-Narrative Framework</h3>
+      <p>A three-layer model for tracing how a physical or virtual environment moves from raw perception to shared meaning.</p>
+      <div class="layers">
+        <span class="layer">01 — Neural-perceptual</span>
+        <span class="layer">02 — Meaning-making / memory</span>
+        <span class="layer">03 — Narrative-digital</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="sec-head">
+    <span class="sec-num">04</span>
+    <h2 class="display">Notes</h2>
+    <span class="sec-rule"></span>
+  </div>
+
+  <div class="rev-table">
+    <div class="rev-head">
+      <span>Rev</span>
+      <span>Date</span>
+      <span>Note</span>
+      <span></span>
+    </div>
+    <div class="rev-row">
+      <div class="rev-id">A</div>
+      <div class="rev-date">— —</div>
+      <div class="rev-desc"><span class="t">What a building does to the nervous system before it does anything to the eye</span>On the gap between how architects talk about a space and what perception research actually says happens in it.</div>
+      <div><a class="rev-link" href="#">Read →</a></div>
+    </div>
+    <div class="rev-row">
+      <div class="rev-id">B</div>
+      <div class="rev-date">— —</div>
+      <div class="rev-desc"><span class="t">Designing space when gravity is optional</span>Notes on what virtual and metaverse environments borrow from physical architecture, and what they get to ignore.</div>
+      <div><a class="rev-link" href="#">Read →</a></div>
+    </div>
+    <div class="rev-row">
+      <div class="rev-id">C</div>
+      <div class="rev-date">— —</div>
+      <div class="rev-desc"><span class="t">Where architecture, neuroscience, and the metaverse actually meet</span>My own view on why these three shouldn't be treated as separate fields borrowing from one another, but as one continuous question about how minds read space.</div>
+      <div><a class="rev-link" href="#">Read →</a></div>
+    </div>
+  </div>
+  <p class="fine" style="margin-top:20px;">Replace these three entries with your own — each row is one idea, dated when you publish it.</p>
+</section>
+
+<section id="publications">
+  <div class="sec-head">
+    <span class="sec-num">05</span>
+    <h2 class="display">Publications</h2>
+    <span class="sec-rule"></span>
+  </div>
+
+  <div class="pub">
+    <div class="p-main">
+      <div class="p-title">Article in <i>Infrastructures</i></div>
+      <div class="p-venue">Scopus-indexed · 2025</div>
+    </div>
+    <div class="p-status">Published</div>
+  </div>
+  <div class="pub">
+    <div class="p-main">
+      <div class="p-title">Human-centric digital twins for autonomous mobility</div>
+      <div class="p-venue">Book · IGI Global</div>
+    </div>
+    <div class="p-status">Published</div>
+  </div>
+  <div class="pub">
+    <div class="p-main">
+      <div class="p-title">Neurocultural Architecture: rethinking perception, space, and identity through cultural neuroscience</div>
+      <div class="p-venue">Book chapter · IGI Global</div>
+    </div>
+    <div class="p-status">Due Jan 2027</div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="sec-head">
+    <span class="sec-num">06</span>
+    <h2 class="display" style="font-size:15px;letter-spacing:.05em;">Contact</h2>
+    <span class="sec-rule"></span>
+  </div>
+  <p class="contact-lead">Open to collaboration, review invitations, and speaking on neuroarchitecture and digital twins.</p>
+
+  <div class="key-grid">
+    <div class="key-item">
+      <span class="k-label label">Email</span>
+      <a href="mailto:z.yaghobloo@gmail.com">z.yaghobloo@gmail.com</a>
+    </div>
+    <div class="key-item">
+      <span class="k-label label">LinkedIn</span>
+      <a href="https://www.linkedin.com/in/zahra-yaghoobloo-aabb735b" target="_blank" rel="noopener">/in/zahra-yaghoobloo</a>
+    </div>
+    <div class="key-item">
+      <span class="k-label label">ResearchGate</span>
+      <a href="https://www.researchgate.net/profile/Zahra-Yaghoobloo" target="_blank" rel="noopener">View profile</a>
+    </div>
+    <div class="key-item">
+      <span class="k-label label">Medium</span>
+      <a href="https://medium.com/@z.yaghobloo" target="_blank" rel="noopener">@z.yaghobloo</a>
+    </div>
+    <div class="key-item">
+      <span class="k-label label">YouTube — Research</span>
+      <a href="#" target="_blank" rel="noopener">Metaverse_Architecture_Future</a>
+    </div>
+  </div>
+
+  <div class="fine">© <span id="yr"></span> Zahra Yaghoobloo. Built as a static site — sheet 05 of 05.</div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
