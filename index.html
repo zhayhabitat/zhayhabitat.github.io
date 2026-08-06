@@ -31,7 +31,7 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  ::selection{background:var(--amber);color:var(--navy-deep);}
+  ::selection{background:var(--amber);color:var(--navy-deep);} 
 
   .mono{font-family:'IBM Plex Mono',monospace;}
   .label{
@@ -77,10 +77,10 @@
     background:linear-gradient(var(--navy-deep) 70%, transparent);
     backdrop-filter:blur(2px);
   }
-  nav .name{font-family:'Fraunces',serif;font-size:15px;letter-spacing:0.02em;color:var(--paper);}
+  nav .name{font-family:'Fraunces',serif;font-size:15px;letter-spacing:0.02em;color:var(--paper);} 
   nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;}
   nav a{color:var(--slate);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s;}
-  nav a:hover{color:var(--amber);}
+  nav a:hover{color:var(--amber);} 
   @media(max-width:640px){
     nav{padding:18px 20px;}
     nav ul{gap:14px;}
@@ -109,7 +109,7 @@
     max-width:16ch;
     color:var(--paper);
   }
-  h1.display em{font-style:italic;color:var(--amber);}
+  h1.display em{font-style:italic;color:var(--amber);} 
   .hero-sub{
     color:var(--paper-dim);
     max-width:56ch;
@@ -136,7 +136,7 @@
     color:var(--amber-dim);
     text-transform:uppercase;
   }
-  .tb-val{padding:14px 18px;font-size:14.5px;color:var(--paper-dim);}
+  .tb-val{padding:14px 18px;font-size:14.5px;color:var(--paper-dim);} 
   @media(max-width:640px){
     .tb-row{grid-template-columns:120px 1fr;}
   }
@@ -151,7 +151,7 @@
     margin:0;
     color:var(--paper);
   }
-  .sec-rule{flex:1;height:1px;background:var(--line-soft);}
+  .sec-rule{flex:1;height:1px;background:var(--line-soft);} 
 
   /* ---- about ---- */
   .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;}
@@ -159,7 +159,7 @@
   .credentials{border-left:1px solid var(--line);padding-left:24px;}
   .credentials .cred{margin-bottom:22px;}
   .credentials .cred .yr{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--amber-dim);display:block;margin-bottom:4px;}
-  .credentials .cred .what{font-size:14px;color:var(--paper-dim);}
+  .credentials .cred .what{font-size:14px;color:var(--paper-dim);} 
   @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:36px;}.credentials{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:24px;}}
 
   /* ---- legend / frameworks ---- */
@@ -170,7 +170,7 @@
     padding:28px 0;
     border-top:1px solid var(--line-soft);
   }
-  .legend-item:last-child{border-bottom:1px solid var(--line-soft);}
+  .legend-item:last-child{border-bottom:1px solid var(--line-soft);} 
   .legend-symbol{
     width:40px;height:40px;
     border:1px solid var(--amber-dim);
@@ -183,14 +183,14 @@
     font-size:19px;margin:0 0 8px;color:var(--paper);
   }
   .legend-item p{margin:0 0 12px;color:var(--paper-dim);font-size:14.5px;max-width:62ch;}
-  .layers{display:flex;flex-wrap:wrap;gap:10px;}
+  .layers{display:flex;flex-wrap:wrap;gap:10px;} 
   .layer{
     font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;
     color:var(--slate);border:1px solid var(--line);padding:5px 10px;
   }
 
   /* ---- notes / revision table ---- */
-  .rev-table{border:1px solid var(--line);}
+  .rev-table{border:1px solid var(--line);} 
   .rev-head,.rev-row{
     display:grid;
     grid-template-columns:70px 130px 1fr 90px;
@@ -207,14 +207,14 @@
   }
   .rev-row{border-bottom:1px solid var(--line-soft);transition:background .2s;}
   .rev-row:last-child{border-bottom:none;}
-  .rev-row:hover{background:var(--navy-panel);}
+  .rev-row:hover{background:var(--navy-panel);} 
   .rev-row > div{padding:18px 16px;}
   .rev-row .rev-id{font-family:'IBM Plex Mono',monospace;color:var(--amber);font-size:13px;}
   .rev-row .rev-date{font-family:'IBM Plex Mono',monospace;color:var(--slate);font-size:12.5px;}
   .rev-row .rev-desc{color:var(--paper-dim);font-size:14.5px;}
   .rev-row .rev-desc .t{color:var(--paper);display:block;margin-bottom:3px;font-size:15px;}
   .rev-row .rev-link{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--slate);text-decoration:none;}
-  .rev-row .rev-link:hover{color:var(--amber);}
+  .rev-row .rev-link:hover{color:var(--amber);} 
   @media(max-width:700px){
     .rev-head{display:none;}
     .rev-row{grid-template-columns:1fr;}
@@ -227,7 +227,7 @@
     display:flex;justify-content:space-between;gap:20px;
     padding:22px 0;border-top:1px solid var(--line-soft);
   }
-  .pub:last-child{border-bottom:1px solid var(--line-soft);}
+  .pub:last-child{border-bottom:1px solid var(--line-soft);} 
   .pub .p-main .p-title{color:var(--paper);font-size:15.5px;margin-bottom:5px;}
   .pub .p-main .p-venue{color:var(--slate);font-size:13px;font-family:'IBM Plex Mono',monospace;}
   .pub .p-status{
@@ -238,11 +238,11 @@
   /* ---- contact / footer title block ---- */
   footer{padding:90px 40px 60px;max-width:980px;margin:0 auto;}
   .contact-lead{font-family:'Fraunces',serif;font-size:clamp(24px,3.4vw,36px);max-width:16ch;margin-bottom:50px;color:var(--paper);font-weight:450;}
-  .key-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);}
+  .key-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);} 
   .key-item{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px;}
-  .key-item .k-label{display:block;margin-bottom:8px;}
+  .key-item .k-label{display:block;margin-bottom:8px;} 
   .key-item a{color:var(--paper-dim);text-decoration:none;font-size:14.5px;}
-  .key-item a:hover{color:var(--amber);}
+  .key-item a:hover{color:var(--amber);} 
   .fine{margin-top:60px;color:var(--slate);font-size:12px;font-family:'IBM Plex Mono',monospace;}
 </style>
 </head>
@@ -270,7 +270,7 @@
     <span class="label">Sheet 01 / 05 — Independent Research Practice</span>
   </div>
   <h1 class="display">Space is studied here as something the nervous system <em>reads</em>, not just occupies.</h1>
-  <p class="hero-sub">I work across neuroarchitecture, digital twin modeling, and metaverse environments — treating the built (and virtual) environment as a cognitive stimulus, a cultural artifact, and a design problem at once.</p>
+  <p class="hero-sub">I work across neuroarchitecture, digital twin modeling, and metaverse environments — treating the built (and virtual) environment as a cognitive stimulus, a cultural artif[...]
 
   <div class="title-block">
     <div class="tb-row">
@@ -300,8 +300,8 @@
   </div>
   <div class="about-grid">
     <div>
-      <p>My training sits at an unusual junction: a first career in architecture, then a PhD, then a return to spatial cognition and digital modeling. That path shapes how I read a building, a virtual environment, or a piece of neuroscience research — as three descriptions of the same problem.</p>
-      <p>Most of my current work asks how perception, memory, and culture shape the way people read and inhabit space, physical or virtual, and how that understanding can be encoded into digital twins for design rather than left as intuition.</p>
+      <p>My training sits at an unusual junction: a first career in architecture, then a PhD, then a return to spatial cognition and digital modeling. That path shapes how I read a building, a vi[...]
+      <p>Most of my current work asks how perception, memory, and culture shape the way people read and inhabit space, physical or virtual, and how that understanding can be encoded into digital [...]
       <p>I write and publish independently, outside institutional affiliation, across journals, edited volumes, and long-form notes.</p>
     </div>
     <div class="credentials">
@@ -336,7 +336,7 @@
     <div class="legend-symbol">N</div>
     <div>
       <h3>Neurocultural Architecture</h3>
-      <p>A way of framing spatial design that treats neuro-perceptual response and cultural meaning-making as inseparable inputs, rather than analyzing sensory qualities of a space and its symbolic or cultural reading as two separate exercises.</p>
+      <p>A way of framing spatial design that treats neuro-perceptual response and cultural meaning-making as inseparable inputs, rather than analyzing sensory qualities of a space and its symbol[...]
     </div>
   </div>
 
@@ -371,19 +371,19 @@
     <div class="rev-row">
       <div class="rev-id">A</div>
       <div class="rev-date">— —</div>
-      <div class="rev-desc"><span class="t">What a building does to the nervous system before it does anything to the eye</span>On the gap between how architects talk about a space and what perception research actually says happens in it.</div>
+      <div class="rev-desc"><span class="t">What a building does to the nervous system before it does anything to the eye</span>On the gap between how architects talk about a space and what perce[...]
       <div><a class="rev-link" href="#">Read →</a></div>
     </div>
     <div class="rev-row">
       <div class="rev-id">B</div>
       <div class="rev-date">Aug 2026</div>
-      <div class="rev-desc"><span class="t">What the metaverse actually asks of architecture</span>On why virtual space doesn't remove the body from the design problem, it just changes which constraint matters.</div>
-     <div><a class="rev-link" href="metaverse-and-the-future-of-architecture.html">Read →</a></div>
+      <div class="rev-desc"><span class="t">What the metaverse actually asks of architecture</span>On why virtual space doesn't remove the body from the design problem, it just changes which cons[...]
+     <div><a class="rev-link" href="/metaverse-and-the-future-of-architecture.html">Read →</a></div>
     </div>
     <div class="rev-row">
       <div class="rev-id">C</div>
       <div class="rev-date">— —</div>
-      <div class="rev-desc"><span class="t">Where architecture, neuroscience, and the metaverse actually meet</span>My own view on why these three shouldn't be treated as separate fields borrowing from one another, but as one continuous question about how minds read space.</div>
+      <div class="rev-desc"><span class="t">Where architecture, neuroscience, and the metaverse actually meet</span>My own view on why these three shouldn't be treated as separate fields borrowin[...]
       <div><a class="rev-link" href="#">Read →</a></div>
     </div>
   </div>
