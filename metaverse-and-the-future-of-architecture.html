@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What the Metaverse Actually Asks of Architecture — Zahra Yaghoobloo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#111d33;
+    --navy:#16233f;
+    --navy-panel:#1c2c4c;
+    --line:#33507f;
+    --line-soft:rgba(90,130,190,0.28);
+    --paper:#f2eee2;
+    --paper-dim:#c7cedd;
+    --slate:#8b96ad;
+    --amber:#f0a355;
+    --amber-dim:#c9834a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--navy-deep);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber);color:var(--navy-deep);}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--slate);
+  }
+  nav{
+    position:sticky;top:0;z-index:10;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 40px;
+    background:linear-gradient(var(--navy-deep) 70%, transparent);
+    backdrop-filter:blur(2px);
+  }
+  nav .name{font-family:'Fraunces',serif;font-size:15px;color:var(--paper);text-decoration:none;}
+  nav a.back{color:var(--slate);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s;}
+  nav a.back:hover{color:var(--amber);}
+  @media(max-width:640px){nav{padding:18px 20px;}}
+
+  article{
+    max-width:700px;
+    margin:0 auto;
+    padding:80px 40px 140px;
+  }
+  @media(max-width:640px){article{padding:50px 22px 100px;}}
+
+  .meta-row{display:flex;gap:16px;align-items:center;margin-bottom:26px;}
+  .meta-row .dot{width:6px;height:6px;background:var(--amber);border-radius:50%;}
+
+  h1.display{
+    font-family:'Fraunces',serif;
+    font-weight:450;
+    font-size:clamp(28px,4.6vw,42px);
+    line-height:1.18;
+    margin:0 0 44px;
+    color:var(--paper);
+  }
+
+  article p{
+    color:var(--paper-dim);
+    font-size:16.5px;
+    margin:0 0 26px;
+  }
+  article p:first-of-type::first-letter{
+    font-family:'Fraunces',serif;
+    font-size:52px;
+    float:left;
+    line-height:0.8;
+    padding:6px 10px 0 0;
+    color:var(--amber);
+  }
+
+  .footnote{
+    margin-top:60px;
+    padding-top:24px;
+    border-top:1px solid var(--line-soft);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--slate);
+    line-height:1.8;
+  }
+
+  .back-bottom{
+    display:inline-block;
+    margin-top:50px;
+    color:var(--slate);
+    text-decoration:none;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .back-bottom:hover{color:var(--amber);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="name" href="../index.html">Z. Yaghoobloo</a>
+  <a class="back" href="../index.html#notes">← All notes</a>
+</nav>
+
+<article>
+  <div class="meta-row">
+    <span class="dot"></span>
+    <span class="label">Note B — Metaverse &amp; Architecture</span>
+  </div>
+
+  <h1 class="display">What the metaverse actually asks of architecture</h1>
+
+  <p>Every conversation about virtual worlds and buildings arrives, sooner or later, at the same image: architecture without gravity. No structural loads, no thermal code, no client who has to live with a leaking roof. It sounds like the end of constraint. In practice it is closer to a trade. One set of limits disappears and another, less familiar one takes its place, and that second set is the more interesting one for anyone actually trying to design in these spaces.</p>
+
+  <p>Start with what genuinely changes. A building modeled in Rhino and Grasshopper, or authored directly in Unreal Engine or Unity, doesn't need a foundation, doesn't need to resolve a beam span, and doesn't need to keep water out. Platforms like NVIDIA Omniverse and the digital twin layer built around BIM tools such as Revit already treat a structure as a dataset before it is treated as a place, which is exactly the habit virtual architecture inherits and pushes further. Seoul's municipal Metaverse Seoul platform and NEOM's published digital twin work are both, underneath the marketing language, exercises in this same shift: a building or a city district exists first as a model you can query, and only secondarily as something anyone walks through.</p>
+
+  <p>What doesn't disappear is the body wearing the headset. This is where most popular writing on the metaverse quietly loses interest, and where the actual design problem lives. The vestibular system doesn't know it's looking at a render. When a user's eyes report movement that the inner ear doesn't confirm, the mismatch produces the nausea and disorientation known as cybersickness, and it shows up reliably in VR environments that ignore it, regardless of how detailed the geometry is. A staircase with no handrail costs nothing to model and produces measurable discomfort in the person navigating it. So the constraint hasn't been removed. It has moved from the structural engineer's desk to the inner ear, and most architects working in these platforms haven't been trained to design for that.</p>
+
+  <p>There's a second body of evidence worth taking seriously here, and it predates the metaverse conversation by more than a decade. Vartanian and colleagues, in a widely cited 2013 study, showed that people consistently judge curvilinear interiors as more beautiful than rectilinear ones, and that this preference tracks with activation in the anterior cingulate cortex, a region associated with approach behavior. That finding was produced using physical room photographs, not virtual environments, but it matters for anyone designing in Unreal or Unity, because it means curvature isn't a stylistic flourish borrowed from parametric software. It's tied to a specific, replicated neural response. A virtual space that abandons this in favor of whatever geometry is cheapest to render is throwing away information that cost real research to establish.</p>
+
+  <p>Eye tracking studies of wayfinding, including work by Ruth Conroy Dalton and collaborators on how people search for a route inside virtual buildings, point to something similar. Where a person looks while deciding which way to turn is not random, and it doesn't map cleanly onto where a designer assumes attention will go. Virtual environments make this data unusually easy to collect, since gaze can be logged automatically, frame by frame, without the equipment overhead that physical eye tracking requires. That's a genuine methodological opening. Almost none of the architecture being built for existing metaverse platforms uses it.</p>
+
+  <p>So the honest version of the claim isn't that the metaverse frees architecture from the body. It's closer to the opposite: it strips away the structural excuses architects have long used to justify a design decision, and leaves the nervous system as the only remaining constraint worth designing around. A firm like Zaha Hadid Architects can generate a virtual pavilion with a geometry no physical budget would ever approve, and the interesting question isn't whether that geometry is buildable. It's whether it's navigable without inducing the disorientation that comes from ignoring vestibular cues, and whether it produces the kind of approach response that curvature reliably produces in a functioning nervous system.</p>
+
+  <p>None of this argues for treating virtual architecture as a lesser, provisional version of the real thing, waiting for enough bandwidth or enough headset resolution to become legitimate. It argues for treating it as a different design problem with its own, quite specific, discipline, one where the missing structural engineer is replaced by something closer to a perceptual one. The tools already exist to measure this: EEG, gaze tracking, presence questionnaires, cybersickness scales like the Simulator Sickness Questionnaire. What's missing is architects treating that data with the same seriousness they'd give a load calculation, instead of assuming that removing gravity removed the need for rigor altogether.</p>
+
+  <a class="back-bottom" href="../index.html#notes">← Back to notes</a>
+</article>
+
+</body>
+</html>
